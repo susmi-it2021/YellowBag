@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <style>
+        body,
+        html {
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        .header {
+            text-align: center;
+            padding-bottom: 20px;
+            position: relative;
+            overflow: hidden;
+            height: auto; 
+        }
+
+        .header-content {
+            display: flex;
+            flex-wrap: wrap; /* Allow items to wrap to the next line on smaller screens */
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(255, 255, 255, 0.5);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            padding: 10px 20px; /* Adjust the padding as needed */
+            animation: fadeIn 2s ease-in-out; 
+        }
+
+        .header-logo {
+            width: 150px;
+            margin-right: 20px;
+        }
+
+        .header-links {
+            display: flex;
+            align-items: center;
+            margin-left: auto;
+        }
+
+        .home-link {
+    color: black;
+    font-size: 18px;
+    text-decoration: none;
+    margin-right: 20px; /* Adjusted margin */
+}
+
+        .home-link:hover {
+            color: blue;
+        }
+
+        .link-symbol {
+            font-size: 20px;
+            margin-right: 5px;
+            color: #9400D3;
+        }
+
+        .link-symbol:last-child {
+            border: 1px solid #000; 
+            padding: 5px;
+        }
+
+        .link-symbol:last-child:hover::after { 
+            content: attr(data-username);
+            font-size: 18px;
+            margin-left: 5px;
+            color: black;
+        }
+
+        @media (max-width: 585px) {
+            .header-logo {
+                width: 100px;
+                margin-right: 10px;
+            }
+            .home-link,
+            .name-link {
+                margin-right: 10px; 
+                margin-bottom: 0;
+                font-size: 13px; 
+            }
+           .header-links {
+            display: flex;
+            align-items: center;
+            margin-left: 0;
+        }
+            .link-symbol {
+                font-size: 10px;
+            }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+    <div class="header-content">
+        <img src="../yellowbag_logo.svg" alt="Logo" class="header-logo">
+        <div class="header-links">
+                <i class="fas fa-shopping-cart link-symbol"></i>
+                <span><a href="order_request.php" class="home-link">OrderEase</a></span>&nbsp;&nbsp;&nbsp;
+                <i class="fas fa-comment-alt link-symbol"></i>
+                <span><a href="feedback.php" class="home-link">Feedback</a></span>&nbsp;&nbsp;&nbsp;
+                <i class="fa fa-sign-out link-symbol"></i>
+                <span><a href="userlogout.php" class="home-link">Logout</a></span>
+        </div>
+    </div>
+</header>
+
+</body>
+</html>
