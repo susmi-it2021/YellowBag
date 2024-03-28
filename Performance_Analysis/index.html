@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>YellowBag</title>
+    <link rel="icon" type="image/x-icon" href="../yellowbagside-svg.svg" />
+    <meta name="author" content="Codeconvey" />
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.css'>
+    <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.0.13/css/all.css'>
+    <style>
+        body {
+            background-color:white !important;
+            margin: 0; /* Remove default margin */
+            padding: 0; /* Remove default padding */
+        }
+
+        .tile {
+            width: 100%;
+            margin: 0px auto;
+            padding: 0 15px; /* Add padding to content */
+        }
+
+        #tile-1 .tab-content {
+            padding: 20px; /* Add padding to the content area */
+        }
+
+        #tile-1 .nav-tabs {
+            position: relative;
+            border: none !important;
+            background-color: #fff;
+            border-radius: 6px;
+            padding-left: 0; /* Remove default padding */
+        }
+
+        #tile-1 .nav-tabs li {
+            margin: 0 !important;
+        }
+
+        #tile-1 .nav-tabs li a {
+            position: relative;
+            margin-right: 0 !important;
+            padding: 20px 40px !important;
+            font-size: 16px;
+            border: none !important;
+            color: #333;
+        }
+
+        #tile-1 .nav-tabs a:hover {
+            background-color: #fff !important;
+            border: none;
+        }
+
+        #tile-1 .slider {
+            display: inline-block;
+            width: 30px;
+            height: 4px;
+            border-radius: 3px;
+            background-color: #39bcd3;
+            position: absolute;
+            z-index: 1200;
+            bottom: 0;
+            transition: all .4s linear;
+        }
+
+        #tile-1 .nav-tabs .active {
+            background-color: transparent !important;
+            border: none !important;
+            color: #39bcd3 !important;
+        }
+
+        .home-icon {
+            position: relative;
+            top: 13px;
+            left: 2px;
+            z-index: 1000;
+            color: #333;
+            font-size: 24px;
+            text-decoration: none;
+            transition: all 0.3s; 
+        }
+
+        .home-icon:hover {
+            color: #39bcd3;
+        }
+
+        @media only screen and (max-width: 768px) {
+            #tile-1 .nav-tabs {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: left;
+                flex-direction: column;
+            }
+            #tile-1 .nav-tabs li {
+                width: auto;
+                margin: 5px;
+            }
+            #tile-1 .nav-tabs li a {
+                padding: 10px 15px !important;
+            }
+        }
+		#tile-1 .tab-content {
+    padding: 20px 0; /* Add padding to the content area */
+    width: 100%; /* Ensure the content fills the whole width */
+    margin: 0 auto; /* Center the content horizontally */
+}
+    </style>
+</head>
+<body>
+    <section>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="tile" id="tile-1">
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs nav-justified" role="tablist">
+                            <div class="slider"></div>
+                            <a href="../dashboard.html" class="home-icon"><i class="fas fa-home"></i></a>
+                            <li class="nav-item">
+                                <a class="nav-link active" id="record-counter-tab" data-toggle="tab" href="#record-counter" role="tab" aria-controls="record-counter" aria-selected="true"><i class="fas fa-clock"></i> Dashboard</a>
+                            </li>
+							<li class="nav-item">
+                                <a class="nav-link" id="feedback-tab" data-toggle="tab" href="#feedback" role="tab" aria-controls="feedback" aria-selected="false"><i class="fas fa-chart-pie"></i> Feedbacks</a>
+                            </li>   
+                        </ul>
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+						    <div class="tab-pane fade show active" id="record-counter" role="tabpanel" aria-labelledby="record-counter-tab"></div>
+                            <div class="tab-pane fade" id="feedback" role="tabpanel" aria-labelledby="feedback-tab">
+							<div id="feedback-content" style="width: 100%; margin: 0 auto;"></div></div>
+                        </div>
+                    </div>
+                    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
+                    <script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/js/bootstrap.min.js'></script>
+                    <script>
+                       $(document).ready(function(){
+    // Load content into the "Feedbacks" tab
+    $('#record-counter').load('dashboard.php');
+    $('#feedback-content').load('feedback1.php');
+
+    // Update slider position on tab click
+    $("#tile-1 .nav-tabs a").click(function() {
+        var position = $(this).parent().position();
+        var width = $(this).parent().width();
+        $("#tile-1 .slider").css({"left":+ position.left,"width":width});
+    });
+});
+                    </script>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
